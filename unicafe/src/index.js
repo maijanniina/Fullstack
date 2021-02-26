@@ -13,12 +13,17 @@ const Button = ({ onClick, text }) =>  (
   </button>
 )
 
-
 const History = (props) => {
   if (props.allClicks.length === 0) {
     return (
       <div>
-        all
+        <h4>Statistics</h4>
+          good
+        <p>neutral</p>
+        <p>bad</p>
+        <p>all</p>
+        <p>average</p>
+        <p>positive</p>
       </div>
     )
   }
@@ -39,19 +44,18 @@ const App = () => {
   const [allClicks, setAll] = useState([])
 
   const handleGoodClick = () => {
-    setAll(allClicks.concat('good'))
-    setGood (+ 1)
+    setGood (good + 1)
   }
 
   const handleNeutralClick = () => {
-    setAll(allClicks.concat('neutral'))
     setNeutral (neutral + 1)
   }
   
   const handleBadClick = () => {
-    setAll(allClicks.concat('bad'))
     setBad(bad + 1)
   }
+
+
   
   return (
     <div>
@@ -63,13 +67,13 @@ const App = () => {
       {bad}
       <Button onClick={handleBadClick} text='bad' />
       <History allClicks={allClicks} />
-      <h4>Statistics</h4>
       <StatisticLine text="good" value ={allClicks} />
       <StatisticLine text="neutral" value ={allClicks} />
       <StatisticLine text="bad" value ={allClicks} />
     </div>
   )
 }
+
 
 ReactDOM.render(<App />, 
   document.getElementById('root')
